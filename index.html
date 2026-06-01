@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LocaFácil — Gerencie tudo que você aluga, em um só lugar</title>
+  <meta name="description" content="O app que organiza seus aluguéis de imóveis, veículos e equipamentos: contratos, cobranças, comprovantes, chamados e relatórios. Feito para o locador brasileiro. Comece grátis." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="LocaFácil — Gerencie tudo que você aluga" />
+  <meta property="og:description" content="Contratos, cobranças, comprovantes e chamados num só app. Comece grátis." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#0D4F6C',
+              light: '#1A6A8A',
+              dark: '#093D55',
+              surface: '#EBF5FB',
+            },
+            success: { DEFAULT: '#10B981', light: '#D1FAE5', dark: '#065F46' },
+            danger: { DEFAULT: '#EF4444', light: '#FEE2E2', dark: '#991B1B' },
+            warning: { DEFAULT: '#F59E0B', light: '#FEF3C7', dark: '#92400E' },
+            ink: '#0F172A',
+            muted: '#64748B',
+            line: '#E2E8F0',
+            canvas: '#F8FAFC',
+          },
+          fontFamily: { sans: ['Nunito', 'system-ui', 'sans-serif'] },
+          boxShadow: {
+            soft: '0 4px 24px -8px rgba(13, 79, 108, 0.18)',
+            card: '0 12px 40px -12px rgba(13, 79, 108, 0.25)',
+            phone: '0 40px 80px -24px rgba(9, 61, 85, 0.45)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { font-family: 'Nunito', system-ui, sans-serif; }
+    ::selection { background: #0D4F6C; color: #fff; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal[data-delay="1"] { transition-delay: .08s; }
+    .reveal[data-delay="2"] { transition-delay: .16s; }
+    .reveal[data-delay="3"] { transition-delay: .24s; }
+
+    /* Hero aurora */
+    .aurora::before {
+      content: ''; position: absolute; inset: -20% -10% auto -10%; height: 70%;
+      background: radial-gradient(60% 60% at 30% 20%, rgba(26,106,138,.28), transparent 70%),
+                  radial-gradient(50% 50% at 80% 10%, rgba(16,185,129,.18), transparent 70%);
+      filter: blur(8px); z-index: 0; pointer-events: none;
+    }
+
+    /* Floating phone */
+    @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+    .floaty { animation: float 6s ease-in-out infinite; }
+
+    /* Nav blur on scroll */
+    .nav-scrolled { background: rgba(255,255,255,.8); backdrop-filter: saturate(180%) blur(20px); border-color: #E2E8F0; }
+
+    .grid-dots { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 22px 22px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .floaty { animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-ink antialiased">
+
+  <!-- ============== NAV ============== -->
+  <header id="nav" class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-all duration-300">
+    <nav class="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-primary text-white shadow-soft">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        </span>
+        <span class="font-extrabold text-lg tracking-tight">LocaFácil</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-[15px] font-semibold text-muted">
+        <a href="#recursos" class="hover:text-ink transition-colors">Recursos</a>
+        <a href="#como" class="hover:text-ink transition-colors">Como funciona</a>
+        <a href="#planos" class="hover:text-ink transition-colors">Planos</a>
+      </div>
+
+      <a href="#entrar" id="cta-nav" class="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-white text-[15px] font-bold shadow-soft hover:bg-primary-dark transition-colors cursor-pointer">
+        Entrar
+        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section id="top" class="relative aurora overflow-hidden pt-28 sm:pt-36 pb-16">
+    <div class="absolute inset-0 grid-dots opacity-[0.5] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"></div>
+    <div class="relative mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+      <!-- Copy -->
+      <div class="relative z-10 text-center lg:text-left">
+        <div class="reveal inline-flex items-center gap-2 rounded-full border border-line bg-white/70 px-3.5 py-1.5 text-[13px] font-bold text-primary shadow-soft">
+          <span class="w-2 h-2 rounded-full bg-success"></span>
+          Grátis para começar · sem cartão
+        </div>
+
+        <h1 class="reveal mt-6 text-4xl sm:text-5xl lg:text-6xl font-900 font-extrabold leading-[1.05] tracking-tight">
+          Gerencie tudo que<br class="hidden sm:block" /> você aluga, em
+          <span class="text-primary">um só lugar.</span>
+        </h1>
+
+        <p class="reveal mt-6 text-lg sm:text-xl text-muted leading-relaxed max-w-xl mx-auto lg:mx-0" data-delay="1">
+          Imóvel, carro, equipamento — <b class="text-ink font-bold">qualquer coisa que você aluga</b>, com contratos, cobranças, comprovantes e chamados num só app. Feito para o locador brasileiro, sem planilha.
+        </p>
+
+        <div class="reveal mt-8 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start" data-delay="2">
+          <a href="#entrar" class="cta-app w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-white text-base font-bold shadow-card hover:bg-primary-dark transition-colors cursor-pointer">
+            Começar grátis
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#recursos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-7 py-4 text-ink text-base font-bold hover:bg-canvas transition-colors cursor-pointer">
+            Ver recursos
+          </a>
+        </div>
+
+        <!-- Store badges (coming soon) -->
+        <div class="reveal mt-8 flex items-center gap-3 justify-center lg:justify-start" data-delay="3">
+          <span class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-3.5 py-2 text-muted">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M16.5 1.6c0 1.2-.4 2.3-1.3 3.2-1 1.1-2.2 1.7-3.4 1.6-.1-1.2.4-2.4 1.2-3.2.9-1 2.3-1.6 3.5-1.6zM20 17.3c-.6 1.4-.9 2-1.7 3.2-1 1.7-2.5 3.8-4.3 3.8-1.6 0-2-1-4.2-1-2.1 0-2.6 1-4.1 1-1.8 0-3.2-1.9-4.3-3.6-2.9-4.5-3.2-9.7-1.4-12.5 1.3-2 3.3-3.2 5.2-3.2 1.9 0 3.1 1.1 4.7 1.1 1.5 0 2.4-1.1 4.6-1.1 1.7 0 3.5.9 4.8 2.5-4.2 2.3-3.5 8.3.7 9.6z"/></svg>
+            <span class="text-left leading-tight"><span class="block text-[10px] font-semibold">Em breve na</span><span class="block text-sm font-extrabold text-ink">App Store</span></span>
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-3.5 py-2 text-muted">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1L13.4 12 3.7 1.7l-.1.1zM17 8.4l-3.2-1.9L5.5 14l8.3 7.5L17 19.6c1.6-.9 1.6-2.4 0-3.3L17 8.4zM14.8 7.7L5.9 2.6l8.9 8.9 2.3-2.3-2.3-1.5zM5.9 21.4l8.9-5.1 2.3-1.5-2.3-2.3-8.9 8.9z"/></svg>
+            <span class="text-left leading-tight"><span class="block text-[10px] font-semibold">Em breve no</span><span class="block text-sm font-extrabold text-ink">Google Play</span></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="relative z-10 flex justify-center lg:justify-end">
+        <div class="floaty reveal" data-delay="2">
+          <div class="relative w-[280px] sm:w-[320px] rounded-[2.8rem] bg-[#0b0f14] p-3 shadow-phone ring-1 ring-black/10">
+            <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#0b0f14] rounded-b-2xl z-20"></div>
+            <div class="relative rounded-[2.2rem] overflow-hidden bg-canvas h-[600px]">
+              <!-- App header -->
+              <div class="bg-gradient-to-br from-primary to-primary-dark px-5 pt-10 pb-6 rounded-b-[28px]">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <p class="text-white font-extrabold text-lg">Olá, Lucas 👋</p>
+                    <p class="text-white/80 text-xs mt-0.5">Seu aluguel</p>
+                  </div>
+                  <span class="relative grid place-items-center w-9 h-9 rounded-full bg-white/15">
+                    <svg viewBox="0 0 24 24" class="w-4.5 h-4.5 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                    <span class="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-danger ring-2 ring-primary"></span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="px-4 -mt-1 pt-4 space-y-3">
+                <p class="text-[11px] font-bold text-muted px-0.5">2 aluguéis · deslize para ver os detalhes</p>
+                <!-- Gradient contract card -->
+                <div class="rounded-2xl bg-gradient-to-br from-primary-light via-primary to-primary-dark p-4 shadow-card ring-2 ring-amber-400/90">
+                  <div class="flex items-center gap-2.5">
+                    <span class="grid place-items-center w-10 h-10 rounded-xl bg-white/15">
+                      <svg viewBox="0 0 24 24" class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                    </span>
+                    <div>
+                      <p class="text-white font-extrabold text-[15px] leading-tight">Apto 302 — Centro</p>
+                      <p class="text-white/80 text-[11px]">Imóvel</p>
+                    </div>
+                  </div>
+                  <div class="flex items-end justify-between mt-4">
+                    <div>
+                      <p class="text-white/80 text-[10px]">Aluguel mensal</p>
+                      <p class="text-white font-extrabold text-2xl">R$ 1.800</p>
+                    </div>
+                    <p class="text-white/90 text-[11px] font-semibold">Vence dia 10</p>
+                  </div>
+                </div>
+                <div class="flex justify-center gap-1.5">
+                  <span class="h-1.5 w-5 rounded-full bg-primary"></span>
+                  <span class="h-1.5 w-1.5 rounded-full bg-line"></span>
+                </div>
+
+                <!-- Next payment -->
+                <p class="text-[13px] font-extrabold text-ink pt-1">Próximo vencimento</p>
+                <div class="rounded-2xl bg-white border border-line p-3.5 flex items-center justify-between shadow-soft">
+                  <div>
+                    <p class="font-extrabold text-lg text-ink">R$ 1.800</p>
+                    <p class="text-[11px] text-muted">Vence 10/06/2026</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="inline-flex items-center gap-1 rounded-full bg-warning-light text-warning-dark text-[10px] font-bold px-2 py-1">Pendente</span>
+                    <p class="text-[10px] font-bold text-primary mt-1">Informar pagamento ›</p>
+                  </div>
+                </div>
+
+                <!-- Paid -->
+                <div class="rounded-2xl bg-white border border-line p-3.5 flex items-center justify-between shadow-soft">
+                  <div>
+                    <p class="font-bold text-[15px] text-ink">R$ 1.800</p>
+                    <p class="text-[11px] text-muted">Pago em 09/05/2026</p>
+                  </div>
+                  <span class="inline-flex items-center gap-1 rounded-full bg-success-light text-success-dark text-[10px] font-bold px-2 py-1">
+                    <svg viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+                    Pago
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== VALUE STRIP ============== -->
+  <section class="border-y border-line bg-canvas">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="reveal"><p class="text-3xl font-extrabold text-primary">0</p><p class="text-sm font-semibold text-muted mt-1">planilhas para manter</p></div>
+      <div class="reveal" data-delay="1"><p class="text-3xl font-extrabold text-primary">100%</p><p class="text-sm font-semibold text-muted mt-1">do aluguel no celular</p></div>
+      <div class="reveal" data-delay="2"><p class="text-3xl font-extrabold text-primary">PIX</p><p class="text-sm font-semibold text-muted mt-1">com comprovante anexado</p></div>
+      <div class="reveal" data-delay="3"><p class="text-3xl font-extrabold text-primary">Grátis</p><p class="text-sm font-semibold text-muted mt-1">para os 2 primeiros aluguéis</p></div>
+    </div>
+  </section>
+
+  <!-- ============== TIPOS ============== -->
+  <section class="mx-auto max-w-7xl px-5 sm:px-8 pt-20 sm:pt-28">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Não é só imóvel</p>
+      <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight" data-delay="1">Alugue o que você quiser</h2>
+      <p class="reveal mt-5 text-lg text-muted" data-delay="2">Apartamento, casa, carro, caminhão, ferramenta, máquina ou qualquer equipamento — se você aluga, o LocaFácil organiza. Mesmo fluxo, mesma facilidade.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-3 gap-5">
+      <article class="reveal group rounded-3xl border border-line bg-white p-8 text-center shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+        <span class="grid place-items-center w-14 h-14 mx-auto rounded-2xl bg-primary-surface text-primary mb-5">
+          <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        </span>
+        <h3 class="text-xl font-extrabold">Imóveis</h3>
+        <p class="mt-2 text-muted leading-relaxed">Apartamentos, casas, salas, kitnets e temporada.</p>
+      </article>
+
+      <article class="reveal group rounded-3xl border border-line bg-white p-8 text-center shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300" data-delay="1">
+        <span class="grid place-items-center w-14 h-14 mx-auto rounded-2xl bg-success-light text-success-dark mb-5">
+          <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0M19 17a2 2 0 1 0 4 0M3 17v-4l2-5a2 2 0 0 1 1.9-1.3h10.2A2 2 0 0 1 19 8l2 5v4"/><path d="M7 13h10"/></svg>
+        </span>
+        <h3 class="text-xl font-extrabold">Veículos</h3>
+        <p class="mt-2 text-muted leading-relaxed">Carros, motos, caminhões, vans e frotas.</p>
+      </article>
+
+      <article class="reveal group rounded-3xl border border-line bg-white p-8 text-center shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300" data-delay="2">
+        <span class="grid place-items-center w-14 h-14 mx-auto rounded-2xl bg-warning-light text-warning-dark mb-5">
+          <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.1-.5-.5-2.1z"/></svg>
+        </span>
+        <h3 class="text-xl font-extrabold">Equipamentos</h3>
+        <p class="mt-2 text-muted leading-relaxed">Ferramentas, máquinas, móveis e equipamentos.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============== RECURSOS ============== -->
+  <section id="recursos" class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Recursos</p>
+      <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight" data-delay="1">Tudo que o aluguel precisa.<br />Nada que ele não precisa.</h2>
+      <p class="reveal mt-5 text-lg text-muted" data-delay="2">Do contrato à cobrança, do comprovante ao chamado — um fluxo só, pensado para quem aluga no Brasil.</p>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- card -->
+      <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-primary-surface text-primary mb-5">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
+        </span>
+        <h3 class="text-xl font-extrabold">Ativos e contratos</h3>
+        <p class="mt-2 text-muted leading-relaxed">Cadastre cada imóvel, veículo ou equipamento com foto, vincule o locatário por e-mail e tenha o contrato sempre à mão.</p>
+      </article>
+
+      <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300" data-delay="1">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-success-light text-success-dark mb-5">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 9h18"/><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15h2M13 15h4"/></svg>
+        </span>
+        <h3 class="text-xl font-extrabold">Cobranças automáticas</h3>
+        <p class="mt-2 text-muted leading-relaxed">As mensalidades são geradas sozinhas. O inquilino paga via PIX e anexa o comprovante; você confirma ou rejeita com um toque.</p>
+      </article>
+
+      <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300" data-delay="2">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-primary-surface text-primary mb-5">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <h3 class="text-xl font-extrabold">Chamados com chat</h3>
+        <p class="mt-2 text-muted leading-relaxed">O inquilino abre um chamado com foto e prioridade. Vocês conversam em tempo real até resolver — tudo registrado.</p>
+      </article>
+
+      <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-warning-light text-warning-dark mb-5">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </span>
+        <h3 class="text-xl font-extrabold">Lembretes de vencimento</h3>
+        <p class="mt-2 text-muted leading-relaxed">Notificações automáticas avisam você e o inquilino antes de cada vencimento. Ninguém esquece, ninguém atrasa.</p>
+      </article>
+
+      <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300" data-delay="1">
+        <div class="flex items-start justify-between mb-5">
+          <span class="grid place-items-center w-12 h-12 rounded-2xl bg-primary-surface text-primary">
+            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg>
+          </span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-amber-400 text-primary-dark text-[11px] font-extrabold px-2.5 py-1">
+            <svg viewBox="0 0 24 24" class="w-3 h-3" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6 22l2-7L2.5 11h7z"/></svg>
+            Premium
+          </span>
+        </div>
+        <h3 class="text-xl font-extrabold">Dashboard financeiro</h3>
+        <p class="mt-2 text-muted leading-relaxed">Veja num relance quanto tem a receber, quanto já recebeu e o que está atrasado — por ativo ou no total. Exclusivo do Premium.</p>
+      </article>
+
+      <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300" data-delay="2">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-success-light text-success-dark mb-5">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+        <h3 class="text-xl font-extrabold">Seguro e privado</h3>
+        <p class="mt-2 text-muted leading-relaxed">Cada conta só enxerga os próprios dados, com segurança no nível do banco. Seus contratos e comprovantes são só seus.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============== COMO FUNCIONA ============== -->
+  <section id="como" class="bg-canvas border-y border-line">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Como funciona</p>
+        <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight" data-delay="1">Pronto em 3 passos</h2>
+      </div>
+
+      <div class="mt-16 grid md:grid-cols-3 gap-6">
+        <div class="reveal relative rounded-3xl bg-white border border-line p-8 shadow-soft">
+          <span class="text-5xl font-900 font-extrabold text-primary-surface select-none">01</span>
+          <h3 class="text-xl font-extrabold mt-2">Cadastre o que aluga</h3>
+          <p class="mt-2 text-muted leading-relaxed">Imóvel, veículo ou equipamento, com foto e os dados do aluguel. Leva menos de um minuto.</p>
+        </div>
+        <div class="reveal relative rounded-3xl bg-white border border-line p-8 shadow-soft" data-delay="1">
+          <span class="text-5xl font-900 font-extrabold text-primary-surface select-none">02</span>
+          <h3 class="text-xl font-extrabold mt-2">Vincule o locatário</h3>
+          <p class="mt-2 text-muted leading-relaxed">Convide pelo e-mail. Ele cria a conta e passa a ver o aluguel dele no app.</p>
+        </div>
+        <div class="reveal relative rounded-3xl bg-white border border-line p-8 shadow-soft" data-delay="2">
+          <span class="text-5xl font-900 font-extrabold text-primary-surface select-none">03</span>
+          <h3 class="text-xl font-extrabold mt-2">Acompanhe tudo</h3>
+          <p class="mt-2 text-muted leading-relaxed">Cobranças, comprovantes e chamados acontecem sozinhos. Você só acompanha.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PLANOS ============== -->
+  <section id="planos" class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Planos</p>
+      <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight" data-delay="1">Comece grátis. Cresça quando quiser.</h2>
+      <p class="reveal mt-5 text-lg text-muted" data-delay="2">Sem fidelidade, sem cartão para começar. Suba para o Premium só quando fizer sentido.</p>
+    </div>
+
+    <div class="mt-16 grid lg:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
+      <!-- FREE -->
+      <div class="reveal rounded-3xl border border-line bg-white p-8 shadow-soft flex flex-col">
+        <h3 class="text-lg font-extrabold text-muted">Gratuito</h3>
+        <div class="mt-3 flex items-end gap-1">
+          <span class="text-5xl font-extrabold">R$ 0</span>
+          <span class="text-muted font-semibold mb-1.5">/sempre</span>
+        </div>
+        <p class="mt-3 text-muted">Tudo que você precisa para começar a organizar seus aluguéis.</p>
+        <ul class="mt-7 space-y-3.5 text-[15px] flex-1">
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Até <b class="font-extrabold">2 ativos</b> e <b class="font-extrabold">2 contratos</b> (imóvel, veículo ou equipamento)</span></li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Cobranças e comprovantes</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Chamados com chat em tempo real</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Lembretes de vencimento</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Modo escuro</li>
+        </ul>
+        <a href="#entrar" class="cta-app mt-8 inline-flex items-center justify-center rounded-full border border-primary text-primary px-6 py-3.5 font-bold hover:bg-primary-surface transition-colors cursor-pointer">Começar grátis</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="reveal relative rounded-3xl bg-primary text-white p-8 shadow-card flex flex-col overflow-hidden" data-delay="1">
+        <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-white/10 blur-2xl"></div>
+        <div class="relative flex items-center justify-between">
+          <h3 class="text-lg font-extrabold">Premium</h3>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-400 text-primary-dark text-xs font-extrabold px-3 py-1">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6 22l2-7L2.5 11h7z"/></svg>
+            Mais popular
+          </span>
+        </div>
+        <div class="relative mt-3 flex items-end gap-1">
+          <span class="text-5xl font-extrabold">R$ 20</span>
+          <span class="text-white/80 font-semibold mb-1.5">/mês</span>
+        </div>
+        <p class="relative mt-3 text-white/85">Tudo do gratuito, sem limites, com os recursos que economizam seu tempo.</p>
+        <ul class="relative mt-7 space-y-3.5 text-[15px] flex-1">
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-amber-300 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Ativos e contratos <b class="font-extrabold">ilimitados</b></span></li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Dashboard financeiro completo</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Recibos em PDF</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Relatórios mensais e anuais</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Reajuste automático (IGPM/IPCA)</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Calculadora de rescisão</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Informe de rendimentos</li>
+          <li class="flex gap-3"><svg viewBox="0 0 24 24" class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Assinatura digital de contratos</li>
+        </ul>
+        <a href="#entrar" class="cta-app relative mt-8 inline-flex items-center justify-center rounded-full bg-white text-primary px-6 py-3.5 font-extrabold hover:bg-amber-300 transition-colors cursor-pointer">Assinar o Premium</a>
+      </div>
+    </div>
+    <p class="reveal text-center text-sm text-muted mt-6">Você pode começar no gratuito e assinar o Premium dentro do app a qualquer momento.</p>
+  </section>
+
+  <!-- ============== PARA QUEM ============== -->
+  <section class="bg-canvas border-y border-line">
+    <div class="mx-auto max-w-5xl px-5 sm:px-8 py-20 text-center">
+      <h2 class="reveal text-3xl sm:text-4xl font-extrabold tracking-tight">Feito para quem aluga por conta própria</h2>
+      <p class="reveal mt-5 text-lg text-muted max-w-2xl mx-auto" data-delay="1">Seja um imóvel, uma frota de veículos ou equipamentos, se você cuida do aluguel sem intermediário, o LocaFácil tira a papelada e a planilha do seu caminho — e dá ao seu locatário um app simples para pagar e pedir reparos.</p>
+      <div class="reveal mt-10 flex flex-wrap justify-center gap-3" data-delay="2">
+        <span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-bold text-ink shadow-soft">Imóveis</span>
+        <span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-bold text-ink shadow-soft">Veículos</span>
+        <span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-bold text-ink shadow-soft">Equipamentos</span>
+        <span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-bold text-ink shadow-soft">Temporada</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CTA FINAL ============== -->
+  <section id="entrar" class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-24">
+      <div class="relative rounded-[2.5rem] bg-gradient-to-br from-primary-light via-primary to-primary-dark px-8 py-16 sm:py-20 text-center shadow-card overflow-hidden">
+        <div class="absolute -top-20 -left-10 w-72 h-72 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-10 w-80 h-80 rounded-full bg-success/20 blur-3xl"></div>
+        <h2 class="reveal relative text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Seu aluguel organizado<br />começa agora.</h2>
+        <p class="reveal relative mt-5 text-lg text-white/85 max-w-xl mx-auto" data-delay="1">Crie sua conta grátis e cadastre seu primeiro imóvel hoje. Sem cartão, sem complicação.</p>
+        <div class="reveal relative mt-9 flex flex-col sm:flex-row gap-3 justify-center" data-delay="2">
+          <a href="#" class="cta-app inline-flex items-center justify-center gap-2 rounded-full bg-white text-primary px-8 py-4 text-base font-extrabold shadow-card hover:bg-amber-300 transition-colors cursor-pointer">
+            Entrar no LocaFácil
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <p class="reveal relative mt-5 text-sm text-white/70" data-delay="3">Em breve também na App Store e no Google Play.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="border-t border-line bg-white">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <span class="grid place-items-center w-8 h-8 rounded-lg bg-primary text-white">
+          <svg viewBox="0 0 24 24" class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        </span>
+        <span class="font-extrabold">LocaFácil</span>
+        <span class="text-muted text-sm hidden sm:inline">· Gerencie tudo que você aluga.</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm font-semibold text-muted">
+        <a href="#recursos" class="hover:text-ink transition-colors">Recursos</a>
+        <a href="#planos" class="hover:text-ink transition-colors">Planos</a>
+        <a href="#entrar" class="hover:text-ink transition-colors">Entrar</a>
+      </div>
+    </div>
+    <div class="border-t border-line">
+      <p class="mx-auto max-w-7xl px-5 sm:px-8 py-5 text-center text-xs text-muted">© 2026 LocaFácil. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // === Config: para onde o botão ENTRAR leva (app web do Expo) ===
+    // Em produção, aponte para a URL do app (ex.: '/app/' ou 'https://app.locafacil.com.br').
+    const APP_URL = '#';
+    document.querySelectorAll('.cta-app, #cta-nav').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        if (APP_URL === '#') return; // ainda não configurado: só rola para a seção
+        e.preventDefault();
+        window.location.href = APP_URL;
+      });
+    });
+
+    // === Scroll reveal ===
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    // === Nav background on scroll ===
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('nav-scrolled', window.scrollY > 12);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>
