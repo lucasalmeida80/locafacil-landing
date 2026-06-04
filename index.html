@@ -50,14 +50,12 @@
     html { font-family: 'Nunito', system-ui, sans-serif; }
     ::selection { background: #0D4F6C; color: #fff; }
 
-    /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
     .reveal.in { opacity: 1; transform: none; }
     .reveal[data-delay="1"] { transition-delay: .08s; }
     .reveal[data-delay="2"] { transition-delay: .16s; }
     .reveal[data-delay="3"] { transition-delay: .24s; }
 
-    /* Hero aurora */
     .aurora::before {
       content: ''; position: absolute; inset: -20% -10% auto -10%; height: 70%;
       background: radial-gradient(60% 60% at 30% 20%, rgba(26,106,138,.28), transparent 70%),
@@ -65,14 +63,19 @@
       filter: blur(8px); z-index: 0; pointer-events: none;
     }
 
-    /* Floating phone */
     @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
     .floaty { animation: float 6s ease-in-out infinite; }
 
-    /* Nav blur on scroll */
     .nav-scrolled { background: rgba(255,255,255,.8); backdrop-filter: saturate(180%) blur(20px); border-color: #E2E8F0; }
-
     .grid-dots { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 22px 22px; }
+
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+
+    /* esconde a scrollbar da galeria */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -95,13 +98,15 @@
       </a>
 
       <div class="hidden md:flex items-center gap-8 text-[15px] font-semibold text-muted">
+        <a href="#oque" class="hover:text-ink transition-colors">O que é</a>
         <a href="#recursos" class="hover:text-ink transition-colors">Recursos</a>
-        <a href="#como" class="hover:text-ink transition-colors">Como funciona</a>
+        <a href="#como" class="hover:text-ink transition-colors">Como usar</a>
         <a href="#planos" class="hover:text-ink transition-colors">Planos</a>
+        <a href="#faq" class="hover:text-ink transition-colors">Dúvidas</a>
       </div>
 
       <a href="#entrar" id="cta-nav" class="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-white text-[15px] font-bold shadow-soft hover:bg-primary-dark transition-colors cursor-pointer">
-        Entrar
+        Começar grátis
         <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </nav>
@@ -119,7 +124,7 @@
           Grátis para começar · sem cartão
         </div>
 
-        <h1 class="reveal mt-6 text-4xl sm:text-5xl lg:text-6xl font-900 font-extrabold leading-[1.05] tracking-tight">
+        <h1 class="reveal mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
           Gerencie tudo que<br class="hidden sm:block" /> você aluga, em
           <span class="text-primary">um só lugar.</span>
         </h1>
@@ -133,8 +138,8 @@
             Começar grátis
             <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#recursos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-7 py-4 text-ink text-base font-bold hover:bg-canvas transition-colors cursor-pointer">
-            Ver recursos
+          <a href="#telas" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-7 py-4 text-ink text-base font-bold hover:bg-canvas transition-colors cursor-pointer">
+            Ver o app por dentro
           </a>
         </div>
 
@@ -145,19 +150,18 @@
             <span class="text-left leading-tight"><span class="block text-[10px] font-semibold">Em breve na</span><span class="block text-sm font-extrabold text-ink">App Store</span></span>
           </span>
           <span class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-3.5 py-2 text-muted">
-            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1L13.4 12 3.7 1.7l-.1.1zM17 8.4l-3.2-1.9L5.5 14l8.3 7.5L17 19.6c1.6-.9 1.6-2.4 0-3.3L17 8.4zM14.8 7.7L5.9 2.6l8.9 8.9 2.3-2.3-2.3-1.5zM5.9 21.4l8.9-5.1 2.3-1.5-2.3-2.3-8.9 8.9z"/></svg>
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1L13.4 12 3.7 1.7l-.1.1zM17 8.4l-3.2-1.9L5.5 14l8.3 7.5L17 19.6c1.6-.9 1.6-2.4 0-3.3L17 8.4z"/></svg>
             <span class="text-left leading-tight"><span class="block text-[10px] font-semibold">Em breve no</span><span class="block text-sm font-extrabold text-ink">Google Play</span></span>
           </span>
         </div>
       </div>
 
-      <!-- Phone mockup -->
+      <!-- Phone mockup: Início do inquilino -->
       <div class="relative z-10 flex justify-center lg:justify-end">
         <div class="floaty reveal" data-delay="2">
           <div class="relative w-[280px] sm:w-[320px] rounded-[2.8rem] bg-[#0b0f14] p-3 shadow-phone ring-1 ring-black/10">
             <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#0b0f14] rounded-b-2xl z-20"></div>
             <div class="relative rounded-[2.2rem] overflow-hidden bg-canvas h-[600px]">
-              <!-- App header -->
               <div class="bg-gradient-to-br from-primary to-primary-dark px-5 pt-10 pb-6 rounded-b-[28px]">
                 <div class="flex items-start justify-between">
                   <div>
@@ -165,15 +169,13 @@
                     <p class="text-white/80 text-xs mt-0.5">Seu aluguel</p>
                   </div>
                   <span class="relative grid place-items-center w-9 h-9 rounded-full bg-white/15">
-                    <svg viewBox="0 0 24 24" class="w-4.5 h-4.5 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                    <svg viewBox="0 0 24 24" class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
                     <span class="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-danger ring-2 ring-primary"></span>
                   </span>
                 </div>
               </div>
-
               <div class="px-4 -mt-1 pt-4 space-y-3">
                 <p class="text-[11px] font-bold text-muted px-0.5">2 aluguéis · deslize para ver os detalhes</p>
-                <!-- Gradient contract card -->
                 <div class="rounded-2xl bg-gradient-to-br from-primary-light via-primary to-primary-dark p-4 shadow-card ring-2 ring-amber-400/90">
                   <div class="flex items-center gap-2.5">
                     <span class="grid place-items-center w-10 h-10 rounded-xl bg-white/15">
@@ -196,8 +198,6 @@
                   <span class="h-1.5 w-5 rounded-full bg-primary"></span>
                   <span class="h-1.5 w-1.5 rounded-full bg-line"></span>
                 </div>
-
-                <!-- Next payment -->
                 <p class="text-[13px] font-extrabold text-ink pt-1">Próximo vencimento</p>
                 <div class="rounded-2xl bg-white border border-line p-3.5 flex items-center justify-between shadow-soft">
                   <div>
@@ -209,8 +209,6 @@
                     <p class="text-[10px] font-bold text-primary mt-1">Informar pagamento ›</p>
                   </div>
                 </div>
-
-                <!-- Paid -->
                 <div class="rounded-2xl bg-white border border-line p-3.5 flex items-center justify-between shadow-soft">
                   <div>
                     <p class="font-bold text-[15px] text-ink">R$ 1.800</p>
@@ -236,6 +234,58 @@
       <div class="reveal" data-delay="1"><p class="text-3xl font-extrabold text-primary">100%</p><p class="text-sm font-semibold text-muted mt-1">do aluguel no celular</p></div>
       <div class="reveal" data-delay="2"><p class="text-3xl font-extrabold text-primary">PIX</p><p class="text-sm font-semibold text-muted mt-1">com comprovante anexado</p></div>
       <div class="reveal" data-delay="3"><p class="text-3xl font-extrabold text-primary">Grátis</p><p class="text-sm font-semibold text-muted mt-1">para os 2 primeiros aluguéis</p></div>
+    </div>
+  </section>
+
+  <!-- ============== O QUE É ============== -->
+  <section id="oque" class="mx-auto max-w-7xl px-5 sm:px-8 pt-20 sm:pt-28">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div>
+        <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">O que é o LocaFácil</p>
+        <h2 class="reveal mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight" data-delay="1">Seu aluguel inteiro, organizado no celular</h2>
+        <p class="reveal mt-5 text-lg text-muted leading-relaxed" data-delay="2">
+          O LocaFácil é o app para quem aluga por conta própria e não quer mais viver de planilha, papel e mensagem solta. Ele junta <b class="text-ink">contratos, cobranças, comprovantes, chamados e relatórios</b> num fluxo só — do seu lado e do lado do seu inquilino.
+        </p>
+        <div class="reveal mt-8 grid sm:grid-cols-2 gap-4" data-delay="2">
+          <div class="rounded-2xl border border-line bg-white p-5 shadow-soft">
+            <div class="flex items-center gap-2">
+              <span class="grid place-items-center w-9 h-9 rounded-xl bg-primary-surface text-primary"><svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V21H3z"/><path d="M9 21v-6h6v6"/></svg></span>
+              <p class="font-extrabold">Para o proprietário</p>
+            </div>
+            <p class="mt-2 text-sm text-muted leading-relaxed">Cadastra ativos, cria contratos, acompanha quem pagou e quem atrasou, e gera relatórios — inclusive para o Imposto de Renda.</p>
+          </div>
+          <div class="rounded-2xl border border-line bg-white p-5 shadow-soft">
+            <div class="flex items-center gap-2">
+              <span class="grid place-items-center w-9 h-9 rounded-xl bg-success-light text-success-dark"><svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Z"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span>
+              <p class="font-extrabold">Para o inquilino</p>
+            </div>
+            <p class="mt-2 text-sm text-muted leading-relaxed">Vê o que deve, paga via PIX e anexa o comprovante, recebe lembretes e abre chamados com foto quando algo precisa de reparo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal grid grid-cols-2 gap-4" data-delay="1">
+        <div class="rounded-3xl border border-line bg-canvas p-6 shadow-soft">
+          <span class="grid place-items-center w-12 h-12 rounded-2xl bg-primary text-white mb-4"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+          <p class="font-extrabold text-ink">Contratos</p>
+          <p class="text-sm text-muted mt-1">Sempre à mão, com inquilino vinculado.</p>
+        </div>
+        <div class="rounded-3xl border border-line bg-canvas p-6 shadow-soft mt-6">
+          <span class="grid place-items-center w-12 h-12 rounded-2xl bg-success text-white mb-4"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+          <p class="font-extrabold text-ink">Cobranças</p>
+          <p class="text-sm text-muted mt-1">Geradas sozinhas, mês a mês.</p>
+        </div>
+        <div class="rounded-3xl border border-line bg-canvas p-6 shadow-soft">
+          <span class="grid place-items-center w-12 h-12 rounded-2xl bg-warning text-white mb-4"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <p class="font-extrabold text-ink">Chamados</p>
+          <p class="text-sm text-muted mt-1">Com chat em tempo real.</p>
+        </div>
+        <div class="rounded-3xl border border-line bg-canvas p-6 shadow-soft mt-6">
+          <span class="grid place-items-center w-12 h-12 rounded-2xl bg-primary-light text-white mb-4"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg></span>
+          <p class="font-extrabold text-ink">Relatórios</p>
+          <p class="text-sm text-muted mt-1">Financeiro e fiscal, no Premium.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -274,8 +324,118 @@
     </div>
   </section>
 
+  <!-- ============== GALERIA DE TELAS ============== -->
+  <section id="telas" class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Por dentro do app</p>
+      <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight" data-delay="1">Veja como ficou bonito (e simples)</h2>
+      <p class="reveal mt-5 text-lg text-muted" data-delay="2">Algumas das telas que você usa no dia a dia, do painel do proprietário ao chat de chamados.</p>
+    </div>
+
+    <div class="mt-14 flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible">
+
+      <!-- Tela 1: Dashboard financeiro -->
+      <figure class="reveal snap-center shrink-0 w-[260px] sm:w-[280px] lg:w-auto mx-auto">
+        <div class="rounded-[2.4rem] bg-[#0b0f14] p-2.5 shadow-phone ring-1 ring-black/10">
+          <div class="rounded-[1.9rem] overflow-hidden bg-canvas h-[520px]">
+            <div class="bg-gradient-to-br from-primary to-primary-dark px-4 pt-8 pb-5 rounded-b-[24px]">
+              <p class="text-white font-extrabold">Painel</p>
+              <p class="text-white/80 text-[11px] mt-0.5">Junho de 2026</p>
+            </div>
+            <div class="p-3 space-y-2.5 -mt-1">
+              <div class="grid grid-cols-3 gap-2">
+                <div class="rounded-xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold">A receber</p><p class="text-primary font-extrabold text-[13px] mt-0.5">R$ 5.4k</p></div>
+                <div class="rounded-xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold">Recebido</p><p class="text-success-dark font-extrabold text-[13px] mt-0.5">R$ 3.6k</p></div>
+                <div class="rounded-xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold">Atrasado</p><p class="text-danger font-extrabold text-[13px] mt-0.5">R$ 1.8k</p></div>
+              </div>
+              <div class="rounded-xl bg-white border border-line p-3 shadow-soft">
+                <div class="flex items-end justify-between h-20">
+                  <div class="w-5 rounded-t bg-primary-surface" style="height:40%"></div>
+                  <div class="w-5 rounded-t bg-primary-surface" style="height:65%"></div>
+                  <div class="w-5 rounded-t bg-primary-light" style="height:55%"></div>
+                  <div class="w-5 rounded-t bg-primary-surface" style="height:80%"></div>
+                  <div class="w-5 rounded-t bg-primary" style="height:100%"></div>
+                  <div class="w-5 rounded-t bg-primary-surface" style="height:70%"></div>
+                </div>
+                <p class="text-[10px] text-muted font-bold mt-2">Recebido nos últimos 6 meses</p>
+              </div>
+              <div class="rounded-xl bg-danger-light p-3 flex items-center gap-2">
+                <span class="grid place-items-center w-7 h-7 rounded-lg bg-danger text-white shrink-0"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
+                <div><p class="text-danger-dark font-extrabold text-[12px] leading-tight">Apto 302 atrasado</p><p class="text-danger-dark/80 text-[10px]">venceu há 4 dias</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="text-center mt-4 font-bold text-ink">Dashboard financeiro <span class="text-[11px] font-extrabold text-amber-600">· Premium</span></figcaption>
+      </figure>
+
+      <!-- Tela 2: Chamado com chat -->
+      <figure class="reveal snap-center shrink-0 w-[260px] sm:w-[280px] lg:w-auto mx-auto" data-delay="1">
+        <div class="rounded-[2.4rem] bg-[#0b0f14] p-2.5 shadow-phone ring-1 ring-black/10">
+          <div class="rounded-[1.9rem] overflow-hidden bg-canvas h-[520px] flex flex-col">
+            <div class="bg-gradient-to-br from-primary to-primary-dark px-4 pt-8 pb-4 rounded-b-[24px]">
+              <p class="text-white font-extrabold text-[15px] leading-tight">Vazamento na pia</p>
+              <span class="inline-flex items-center gap-1 mt-1 rounded-full bg-warning text-white text-[10px] font-bold px-2 py-0.5">Em andamento</span>
+            </div>
+            <div class="flex-1 p-3 space-y-2.5 overflow-hidden">
+              <div class="max-w-[80%] rounded-2xl rounded-tl-sm bg-white border border-line p-2.5 shadow-soft">
+                <p class="text-[11px] text-ink leading-snug">A pia da cozinha está pingando embaixo. Mando foto?</p>
+                <p class="text-[9px] text-muted mt-1">Inquilino · 09:12</p>
+              </div>
+              <div class="ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-primary p-2.5 shadow-soft">
+                <p class="text-[11px] text-white leading-snug">Pode mandar! Já chamo o encanador hoje.</p>
+                <p class="text-[9px] text-white/70 mt-1">Você · 09:15</p>
+              </div>
+              <div class="max-w-[70%] rounded-2xl rounded-tl-sm bg-white border border-line p-1.5 shadow-soft">
+                <div class="rounded-lg bg-primary-surface h-20 grid place-items-center"><svg viewBox="0 0 24 24" class="w-7 h-7 text-primary/40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
+              </div>
+            </div>
+            <div class="p-3 border-t border-line flex items-center gap-2">
+              <div class="flex-1 rounded-full bg-canvas border border-line px-3 py-2"><p class="text-[11px] text-muted">Mensagem…</p></div>
+              <span class="grid place-items-center w-8 h-8 rounded-full bg-primary text-white"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+            </div>
+          </div>
+        </div>
+        <figcaption class="text-center mt-4 font-bold text-ink">Chamados com chat</figcaption>
+      </figure>
+
+      <!-- Tela 3: Fiscal / IR -->
+      <figure class="reveal snap-center shrink-0 w-[260px] sm:w-[280px] lg:w-auto mx-auto" data-delay="2">
+        <div class="rounded-[2.4rem] bg-[#0b0f14] p-2.5 shadow-phone ring-1 ring-black/10">
+          <div class="rounded-[1.9rem] overflow-hidden bg-canvas h-[520px]">
+            <div class="bg-gradient-to-br from-primary to-primary-dark px-4 pt-8 pb-5 rounded-b-[24px]">
+              <p class="text-white font-extrabold">Imposto de Renda</p>
+              <p class="text-white/80 text-[11px] mt-0.5">Ano-base 2025</p>
+            </div>
+            <div class="p-3 space-y-2.5 -mt-1">
+              <div class="rounded-xl bg-white border border-line p-3 shadow-soft">
+                <p class="text-[10px] text-muted font-bold">Total recebido no ano</p>
+                <p class="text-2xl font-extrabold text-ink">R$ 43.200</p>
+                <div class="mt-2 h-1.5 rounded-full bg-line overflow-hidden"><div class="h-full bg-success w-2/3"></div></div>
+                <p class="text-[10px] text-muted mt-1.5"><b class="text-success-dark">R$ 28,8k declarados</b> · R$ 14,4k a declarar</p>
+              </div>
+              <p class="text-[11px] font-extrabold text-ink px-0.5">Por imóvel</p>
+              <div class="rounded-xl bg-white border border-line p-2.5 flex items-center justify-between shadow-soft">
+                <div class="flex items-center gap-2"><span class="grid place-items-center w-7 h-7 rounded-lg bg-primary-surface text-primary"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span><p class="text-[12px] font-bold text-ink">Apto 302</p></div>
+                <p class="text-[12px] font-extrabold text-ink">R$ 21,6k</p>
+              </div>
+              <div class="rounded-xl bg-white border border-line p-2.5 flex items-center justify-between shadow-soft">
+                <div class="flex items-center gap-2"><span class="grid place-items-center w-7 h-7 rounded-lg bg-primary-surface text-primary"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span><p class="text-[12px] font-bold text-ink">Casa Jd. Sul</p></div>
+                <p class="text-[12px] font-extrabold text-ink">R$ 21,6k</p>
+              </div>
+              <button class="w-full rounded-xl bg-primary text-white text-[12px] font-extrabold py-2.5 mt-1">Gerar informe de rendimentos</button>
+            </div>
+          </div>
+        </div>
+        <figcaption class="text-center mt-4 font-bold text-ink">Relatório fiscal / IR <span class="text-[11px] font-extrabold text-amber-600">· Premium</span></figcaption>
+      </figure>
+    </div>
+    <p class="reveal text-center text-sm text-muted mt-2 lg:hidden">← deslize para ver mais telas →</p>
+  </section>
+
   <!-- ============== RECURSOS ============== -->
-  <section id="recursos" class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
+  <section id="recursos" class="bg-canvas border-y border-line">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
     <div class="max-w-2xl mx-auto text-center">
       <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Recursos</p>
       <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight" data-delay="1">Tudo que o aluguel precisa.<br />Nada que ele não precisa.</h2>
@@ -283,7 +443,6 @@
     </div>
 
     <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- card -->
       <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300">
         <span class="grid place-items-center w-12 h-12 rounded-2xl bg-primary-surface text-primary mb-5">
           <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
@@ -294,7 +453,7 @@
 
       <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300" data-delay="1">
         <span class="grid place-items-center w-12 h-12 rounded-2xl bg-success-light text-success-dark mb-5">
-          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 9h18"/><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15h2M13 15h4"/></svg>
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M7 15h2M13 15h4"/></svg>
         </span>
         <h3 class="text-xl font-extrabold">Cobranças automáticas</h3>
         <p class="mt-2 text-muted leading-relaxed">As mensalidades são geradas sozinhas. O inquilino paga via PIX e anexa o comprovante; você confirma ou rejeita com um toque.</p>
@@ -331,45 +490,88 @@
       </article>
 
       <article class="reveal group rounded-3xl border border-line bg-white p-7 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300" data-delay="2">
-        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-success-light text-success-dark mb-5">
-          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-        </span>
-        <h3 class="text-xl font-extrabold">Seguro e privado</h3>
-        <p class="mt-2 text-muted leading-relaxed">Cada conta só enxerga os próprios dados, com segurança no nível do banco. Seus contratos e comprovantes são só seus.</p>
+        <div class="flex items-start justify-between mb-5">
+          <span class="grid place-items-center w-12 h-12 rounded-2xl bg-primary-surface text-primary">
+            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          </span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-amber-400 text-primary-dark text-[11px] font-extrabold px-2.5 py-1">
+            <svg viewBox="0 0 24 24" class="w-3 h-3" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6 22l2-7L2.5 11h7z"/></svg>
+            Premium
+          </span>
+        </div>
+        <h3 class="text-xl font-extrabold">Assinatura digital</h3>
+        <p class="mt-2 text-muted leading-relaxed">Envie o contrato para o inquilino assinar digitalmente pelo próprio app, com validade e registro. Recibos e informe de IR também em PDF.</p>
       </article>
+    </div>
     </div>
   </section>
 
-  <!-- ============== COMO FUNCIONA ============== -->
-  <section id="como" class="bg-canvas border-y border-line">
-    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
-      <div class="max-w-2xl mx-auto text-center">
-        <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Como funciona</p>
-        <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight" data-delay="1">Pronto em 3 passos</h2>
+  <!-- ============== COMO USAR ============== -->
+  <section id="como" class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Como usar</p>
+      <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight" data-delay="1">Simples para os dois lados</h2>
+      <p class="reveal mt-5 text-lg text-muted" data-delay="2">Você organiza; seu inquilino paga e pede reparos. Veja o passo a passo de cada um.</p>
+    </div>
+
+    <div class="mt-16 grid lg:grid-cols-2 gap-6">
+      <!-- Proprietário -->
+      <div class="reveal rounded-3xl border border-line bg-white p-7 sm:p-9 shadow-soft">
+        <div class="flex items-center gap-3">
+          <span class="grid place-items-center w-11 h-11 rounded-2xl bg-primary text-white"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V21H3z"/><path d="M9 21v-6h6v6"/></svg></span>
+          <h3 class="text-2xl font-extrabold">Proprietário</h3>
+        </div>
+        <ol class="mt-7 space-y-6">
+          <li class="flex gap-4">
+            <span class="grid place-items-center w-8 h-8 rounded-full bg-primary-surface text-primary font-extrabold shrink-0">1</span>
+            <div><p class="font-extrabold text-ink">Cadastre o que você aluga</p><p class="text-muted mt-1 leading-relaxed">Adicione o imóvel, veículo ou equipamento com foto e os dados — leva menos de um minuto.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="grid place-items-center w-8 h-8 rounded-full bg-primary-surface text-primary font-extrabold shrink-0">2</span>
+            <div><p class="font-extrabold text-ink">Crie o contrato e convide o inquilino</p><p class="text-muted mt-1 leading-relaxed">Defina valor e vencimento, convide pelo e-mail e, se quiser, peça a assinatura digital.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="grid place-items-center w-8 h-8 rounded-full bg-primary-surface text-primary font-extrabold shrink-0">3</span>
+            <div><p class="font-extrabold text-ink">Acompanhe as cobranças</p><p class="text-muted mt-1 leading-relaxed">As mensalidades nascem sozinhas. Confirme os comprovantes recebidos e veja quem está em dia.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="grid place-items-center w-8 h-8 rounded-full bg-amber-400 text-primary-dark font-extrabold shrink-0">4</span>
+            <div><p class="font-extrabold text-ink">Tenha relatórios e IR na mão <span class="text-[11px] font-extrabold text-amber-600">· Premium</span></p><p class="text-muted mt-1 leading-relaxed">Dashboard financeiro, recibos em PDF e o informe de rendimentos prontos para a declaração.</p></div>
+          </li>
+        </ol>
       </div>
 
-      <div class="mt-16 grid md:grid-cols-3 gap-6">
-        <div class="reveal relative rounded-3xl bg-white border border-line p-8 shadow-soft">
-          <span class="text-5xl font-900 font-extrabold text-primary-surface select-none">01</span>
-          <h3 class="text-xl font-extrabold mt-2">Cadastre o que aluga</h3>
-          <p class="mt-2 text-muted leading-relaxed">Imóvel, veículo ou equipamento, com foto e os dados do aluguel. Leva menos de um minuto.</p>
+      <!-- Inquilino -->
+      <div class="reveal rounded-3xl border border-line bg-white p-7 sm:p-9 shadow-soft" data-delay="1">
+        <div class="flex items-center gap-3">
+          <span class="grid place-items-center w-11 h-11 rounded-2xl bg-success text-white"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Z"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span>
+          <h3 class="text-2xl font-extrabold">Inquilino</h3>
         </div>
-        <div class="reveal relative rounded-3xl bg-white border border-line p-8 shadow-soft" data-delay="1">
-          <span class="text-5xl font-900 font-extrabold text-primary-surface select-none">02</span>
-          <h3 class="text-xl font-extrabold mt-2">Vincule o locatário</h3>
-          <p class="mt-2 text-muted leading-relaxed">Convide pelo e-mail. Ele cria a conta e passa a ver o aluguel dele no app.</p>
-        </div>
-        <div class="reveal relative rounded-3xl bg-white border border-line p-8 shadow-soft" data-delay="2">
-          <span class="text-5xl font-900 font-extrabold text-primary-surface select-none">03</span>
-          <h3 class="text-xl font-extrabold mt-2">Acompanhe tudo</h3>
-          <p class="mt-2 text-muted leading-relaxed">Cobranças, comprovantes e chamados acontecem sozinhos. Você só acompanha.</p>
-        </div>
+        <ol class="mt-7 space-y-6">
+          <li class="flex gap-4">
+            <span class="grid place-items-center w-8 h-8 rounded-full bg-success-light text-success-dark font-extrabold shrink-0">1</span>
+            <div><p class="font-extrabold text-ink">Aceite o convite</p><p class="text-muted mt-1 leading-relaxed">Crie sua conta grátis pelo convite do proprietário e veja o aluguel na tela inicial.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="grid place-items-center w-8 h-8 rounded-full bg-success-light text-success-dark font-extrabold shrink-0">2</span>
+            <div><p class="font-extrabold text-ink">Pague e anexe o comprovante</p><p class="text-muted mt-1 leading-relaxed">Pague via PIX e informe o pagamento anexando o comprovante. O proprietário confirma.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="grid place-items-center w-8 h-8 rounded-full bg-success-light text-success-dark font-extrabold shrink-0">3</span>
+            <div><p class="font-extrabold text-ink">Abra chamados quando precisar</p><p class="text-muted mt-1 leading-relaxed">Algo quebrou? Abra um chamado com foto e converse em tempo real até resolver.</p></div>
+          </li>
+          <li class="flex gap-4">
+            <span class="grid place-items-center w-8 h-8 rounded-full bg-success-light text-success-dark font-extrabold shrink-0">4</span>
+            <div><p class="font-extrabold text-ink">Receba lembretes</p><p class="text-muted mt-1 leading-relaxed">Avisos antes do vencimento para você nunca mais atrasar sem querer.</p></div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
   <!-- ============== PLANOS ============== -->
-  <section id="planos" class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
+  <section id="planos" class="bg-canvas border-y border-line">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-20 sm:py-28">
     <div class="max-w-2xl mx-auto text-center">
       <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Planos</p>
       <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight" data-delay="1">Comece grátis. Cresça quando quiser.</h2>
@@ -406,7 +608,7 @@
           </span>
         </div>
         <div class="relative mt-3 flex items-end gap-1">
-          <span class="text-5xl font-extrabold">R$ 20</span>
+          <span class="text-5xl font-extrabold">R$ 29,90</span>
           <span class="text-white/80 font-semibold mb-1.5">/mês</span>
         </div>
         <p class="relative mt-3 text-white/85">Tudo do gratuito, sem limites, com os recursos que economizam seu tempo.</p>
@@ -423,20 +625,41 @@
         <a href="#entrar" class="cta-app relative mt-8 inline-flex items-center justify-center rounded-full bg-white text-primary px-6 py-3.5 font-extrabold hover:bg-amber-300 transition-colors cursor-pointer">Assinar o Premium</a>
       </div>
     </div>
-    <p class="reveal text-center text-sm text-muted mt-6">Você pode começar no gratuito e assinar o Premium dentro do app a qualquer momento.</p>
+    <p class="reveal text-center text-sm text-muted mt-6">Você pode começar no gratuito e assinar o Premium dentro do app a qualquer momento. A assinatura é cobrada pela App Store e renova automaticamente até você cancelar.</p>
+    </div>
   </section>
 
-  <!-- ============== PARA QUEM ============== -->
-  <section class="bg-canvas border-y border-line">
-    <div class="mx-auto max-w-5xl px-5 sm:px-8 py-20 text-center">
-      <h2 class="reveal text-3xl sm:text-4xl font-extrabold tracking-tight">Feito para quem aluga por conta própria</h2>
-      <p class="reveal mt-5 text-lg text-muted max-w-2xl mx-auto" data-delay="1">Seja um imóvel, uma frota de veículos ou equipamentos, se você cuida do aluguel sem intermediário, o LocaFácil tira a papelada e a planilha do seu caminho — e dá ao seu locatário um app simples para pagar e pedir reparos.</p>
-      <div class="reveal mt-10 flex flex-wrap justify-center gap-3" data-delay="2">
-        <span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-bold text-ink shadow-soft">Imóveis</span>
-        <span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-bold text-ink shadow-soft">Veículos</span>
-        <span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-bold text-ink shadow-soft">Equipamentos</span>
-        <span class="rounded-full border border-line bg-white px-4 py-2 text-sm font-bold text-ink shadow-soft">Temporada</span>
-      </div>
+  <!-- ============== FAQ ============== -->
+  <section id="faq" class="mx-auto max-w-3xl px-5 sm:px-8 py-20 sm:py-28">
+    <div class="text-center">
+      <p class="reveal text-sm font-extrabold tracking-widest text-primary uppercase">Dúvidas</p>
+      <h2 class="reveal mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight" data-delay="1">Perguntas frequentes</h2>
+    </div>
+    <div class="mt-12 space-y-3">
+      <details class="reveal group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4"><span class="font-extrabold text-ink">Preciso pagar para usar?</span><svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="mt-3 text-muted leading-relaxed">Não. Você começa de graça, sem cartão, com até 2 ativos e 2 contratos. O Premium (R$ 29,90/mês) é opcional, para quem precisa de mais ativos e dos recursos avançados.</p>
+      </details>
+      <details class="reveal group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4"><span class="font-extrabold text-ink">Serve para alugar carro ou equipamento, não só imóvel?</span><svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="mt-3 text-muted leading-relaxed">Sim! O LocaFácil foi feito para qualquer aluguel: imóveis, veículos e equipamentos. O fluxo é o mesmo para todos.</p>
+      </details>
+      <details class="reveal group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4"><span class="font-extrabold text-ink">O app cobra o aluguel pelo inquilino?</span><svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="mt-3 text-muted leading-relaxed">O pagamento do aluguel acontece direto entre vocês (ex.: PIX). O LocaFácil organiza as cobranças, guarda os comprovantes e mostra o status — sem ficar no meio do seu dinheiro.</p>
+      </details>
+      <details class="reveal group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4"><span class="font-extrabold text-ink">Como cancelo o Premium?</span><svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="mt-3 text-muted leading-relaxed">A qualquer momento, em Ajustes › sua conta Apple › Assinaturas. Você continua com o Premium até o fim do período já pago.</p>
+      </details>
+      <details class="reveal group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4"><span class="font-extrabold text-ink">Meus dados ficam seguros?</span><svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="mt-3 text-muted leading-relaxed">Sim. Cada conta só enxerga os próprios dados, com segurança no nível do banco e criptografia em trânsito. Veja a <a href="privacidade.html" class="text-primary font-bold underline">Política de Privacidade</a>.</p>
+      </details>
+      <details class="reveal group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4"><span class="font-extrabold text-ink">Em quais aparelhos funciona?</span><svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="mt-3 text-muted leading-relaxed">O LocaFácil chega primeiro ao iPhone (App Store) e, em seguida, ao Android (Google Play). Cadastre-se para ser avisado no lançamento.</p>
+      </details>
     </div>
   </section>
 
@@ -447,7 +670,7 @@
         <div class="absolute -top-20 -left-10 w-72 h-72 rounded-full bg-white/10 blur-3xl"></div>
         <div class="absolute -bottom-24 -right-10 w-80 h-80 rounded-full bg-success/20 blur-3xl"></div>
         <h2 class="reveal relative text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Seu aluguel organizado<br />começa agora.</h2>
-        <p class="reveal relative mt-5 text-lg text-white/85 max-w-xl mx-auto" data-delay="1">Crie sua conta grátis e cadastre seu primeiro imóvel hoje. Sem cartão, sem complicação.</p>
+        <p class="reveal relative mt-5 text-lg text-white/85 max-w-xl mx-auto" data-delay="1">Crie sua conta grátis e cadastre seu primeiro aluguel hoje. Sem cartão, sem complicação.</p>
         <div class="reveal relative mt-9 flex flex-col sm:flex-row gap-3 justify-center" data-delay="2">
           <a href="#" class="cta-app inline-flex items-center justify-center gap-2 rounded-full bg-white text-primary px-8 py-4 text-base font-extrabold shadow-card hover:bg-amber-300 transition-colors cursor-pointer">
             Entrar no LocaFácil
@@ -461,18 +684,26 @@
 
   <!-- ============== FOOTER ============== -->
   <footer class="border-t border-line bg-white">
-    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-2.5">
-        <span class="grid place-items-center w-8 h-8 rounded-lg bg-primary text-white">
-          <svg viewBox="0 0 24 24" class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
-        </span>
-        <span class="font-extrabold">LocaFácil</span>
-        <span class="text-muted text-sm hidden sm:inline">· Gerencie tudo que você aluga.</span>
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-12 grid sm:grid-cols-2 gap-8">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="grid place-items-center w-8 h-8 rounded-lg bg-primary text-white">
+            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+          </span>
+          <span class="font-extrabold">LocaFácil</span>
+        </div>
+        <p class="mt-3 text-sm text-muted max-w-xs leading-relaxed">Gerencie tudo que você aluga — imóveis, veículos e equipamentos — em um só app.</p>
       </div>
-      <div class="flex items-center gap-6 text-sm font-semibold text-muted">
-        <a href="#recursos" class="hover:text-ink transition-colors">Recursos</a>
-        <a href="#planos" class="hover:text-ink transition-colors">Planos</a>
-        <a href="#entrar" class="hover:text-ink transition-colors">Entrar</a>
+      <div class="sm:text-right">
+        <div class="flex flex-wrap sm:justify-end gap-x-6 gap-y-2 text-sm font-semibold text-muted">
+          <a href="#recursos" class="hover:text-ink transition-colors">Recursos</a>
+          <a href="#planos" class="hover:text-ink transition-colors">Planos</a>
+          <a href="#faq" class="hover:text-ink transition-colors">Dúvidas</a>
+          <a href="suporte.html" class="hover:text-ink transition-colors">Suporte</a>
+          <a href="privacidade.html" class="hover:text-ink transition-colors">Privacidade</a>
+          <a href="termos.html" class="hover:text-ink transition-colors">Termos de uso</a>
+        </div>
+        <a href="mailto:suporte@locafacilapp.com.br" class="mt-3 inline-block text-sm font-semibold text-primary hover:text-primary-dark transition-colors">suporte@locafacilapp.com.br</a>
       </div>
     </div>
     <div class="border-t border-line">
@@ -482,11 +713,10 @@
 
   <script>
     // === Config: para onde o botão ENTRAR leva (app web do Expo) ===
-    // Em produção, aponte para a URL do app (ex.: '/app/' ou 'https://app.locafacil.com.br').
     const APP_URL = '#';
     document.querySelectorAll('.cta-app, #cta-nav').forEach((el) => {
       el.addEventListener('click', (e) => {
-        if (APP_URL === '#') return; // ainda não configurado: só rola para a seção
+        if (APP_URL === '#') return;
         e.preventDefault();
         window.location.href = APP_URL;
       });

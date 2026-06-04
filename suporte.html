@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suporte — LocaFácil</title>
+  <meta name="description" content="Central de ajuda do LocaFácil: dúvidas frequentes, assinatura, conta e contato." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          primary: { DEFAULT: '#0D4F6C', light: '#1A6A8A', dark: '#093D55', surface: '#EBF5FB' },
+          success: { DEFAULT: '#10B981', light: '#D1FAE5', dark: '#065F46' },
+          ink: '#0F172A', muted: '#64748B', line: '#E2E8F0', canvas: '#F8FAFC',
+        },
+        fontFamily: { sans: ['Nunito', 'system-ui', 'sans-serif'] },
+        boxShadow: { soft: '0 4px 24px -8px rgba(13, 79, 108, 0.18)', card: '0 12px 40px -12px rgba(13, 79, 108, 0.25)' },
+      } },
+    };
+  </script>
+  <style>
+    html { font-family: 'Nunito', system-ui, sans-serif; }
+    ::selection { background: #0D4F6C; color: #fff; }
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-white text-ink antialiased">
+
+  <header class="border-b border-line">
+    <nav class="mx-auto max-w-3xl px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-primary text-white shadow-soft">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        </span>
+        <span class="font-extrabold text-lg tracking-tight">LocaFácil</span>
+      </a>
+      <a href="index.html" class="text-sm font-bold text-muted hover:text-ink transition-colors">← Voltar ao site</a>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-5 sm:px-8 py-12 sm:py-16">
+    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Central de Ajuda</h1>
+    <p class="mt-4 text-lg text-muted leading-relaxed">Precisa de ajuda com o LocaFácil? Estamos aqui. Veja as dúvidas frequentes abaixo ou fale direto com a gente.</p>
+
+    <!-- Contato em destaque -->
+    <div class="mt-8 rounded-3xl bg-gradient-to-br from-primary-light via-primary to-primary-dark p-7 sm:p-8 text-white shadow-card">
+      <p class="text-sm font-bold text-white/80 uppercase tracking-widest">Fale conosco</p>
+      <p class="mt-2 text-2xl font-extrabold">suporte@locafacilapp.com.br</p>
+      <p class="mt-2 text-white/85">Respondemos normalmente em até <b class="text-white">2 dias úteis</b>.</p>
+      <a href="mailto:suporte@locafacilapp.com.br" class="mt-5 inline-flex items-center gap-2 rounded-full bg-white text-primary px-6 py-3 font-extrabold hover:bg-amber-300 transition-colors cursor-pointer">
+        Enviar e-mail
+        <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <!-- FAQ -->
+    <h2 class="mt-12 text-2xl font-extrabold tracking-tight">Dúvidas frequentes</h2>
+    <div class="mt-5 space-y-3">
+
+      <details class="group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-extrabold text-ink">Como começo a usar o LocaFácil?</span>
+          <svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-muted leading-relaxed">Baixe o app, crie sua conta gratuita e cadastre seu primeiro ativo (imóvel, veículo ou equipamento). Depois é só vincular o locatário pelo e-mail e criar o contrato — as cobranças passam a ser geradas automaticamente.</p>
+      </details>
+
+      <details class="group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-extrabold text-ink">O que está incluído no plano gratuito?</span>
+          <svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-muted leading-relaxed">Até 2 ativos e 2 contratos, com cobranças, comprovantes, chamados com chat em tempo real e lembretes de vencimento. Sem cartão e sem prazo.</p>
+      </details>
+
+      <details class="group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-extrabold text-ink">Como funciona a assinatura Premium?</span>
+          <svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-muted leading-relaxed">O Premium custa <b>R$ 29,90/mês</b>, cobrado pela App Store na sua conta Apple, e renova automaticamente até você cancelar. Ele libera ativos e contratos ilimitados, dashboard financeiro, recibos em PDF, relatórios, reajuste automático, informe de rendimentos e assinatura digital de contratos.</p>
+      </details>
+
+      <details class="group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-extrabold text-ink">Como cancelo a assinatura?</span>
+          <svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-muted leading-relaxed">No iPhone, abra <b>Ajustes › toque no seu nome › Assinaturas</b>, selecione <b>LocaFácil</b> e toque em <b>Cancelar assinatura</b>. Você continua com o Premium até o fim do período já pago.</p>
+      </details>
+
+      <details class="group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-extrabold text-ink">Troquei de celular. Como restauro minha compra?</span>
+          <svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-muted leading-relaxed">Na tela de assinatura do app, toque em <b>Restaurar compras</b>. Use a mesma conta Apple usada na compra e o Premium é reativado.</p>
+      </details>
+
+      <details class="group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-extrabold text-ink">Esqueci minha senha. E agora?</span>
+          <svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-muted leading-relaxed">Na tela de login, toque em <b>"Esqueceu a senha?"</b>, informe seu e-mail e abra o link que enviamos para criar uma nova senha.</p>
+      </details>
+
+      <details class="group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-extrabold text-ink">Como excluo minha conta e meus dados?</span>
+          <svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-muted leading-relaxed">Envie um e-mail para <a href="mailto:suporte@locafacilapp.com.br?subject=Excluir%20conta" class="text-primary font-bold underline">suporte@locafacilapp.com.br</a> com o assunto "Excluir conta". Removemos sua conta e seus dados em até 30 dias, conforme a <a href="privacidade.html" class="text-primary font-bold underline">Política de Privacidade</a>.</p>
+      </details>
+
+      <details class="group rounded-2xl border border-line bg-white p-5 shadow-soft">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-extrabold text-ink">Meus dados estão seguros?</span>
+          <svg class="chev w-5 h-5 text-muted transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-muted leading-relaxed">Sim. Cada conta só enxerga os próprios dados, com segurança no nível do banco de dados e criptografia em trânsito. Saiba mais na <a href="privacidade.html" class="text-primary font-bold underline">Política de Privacidade</a>.</p>
+      </details>
+
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-line flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-muted">
+      <a href="index.html" class="hover:text-ink transition-colors">Início</a>
+      <a href="privacidade.html" class="hover:text-ink transition-colors">Privacidade</a>
+      <a href="termos.html" class="hover:text-ink transition-colors">Termos de uso</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-line">
+    <p class="mx-auto max-w-3xl px-5 sm:px-8 py-6 text-center text-xs text-muted">© 2026 LocaFácil. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
