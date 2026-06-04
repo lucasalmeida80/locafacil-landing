@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
   <title>LocaFácil — Gerencie tudo que você aluga, em um só lugar</title>
   <meta name="description" content="O app que organiza seus aluguéis de imóveis, veículos e equipamentos: contratos, cobranças, comprovantes, chamados e relatórios. Feito para o locador brasileiro. Comece grátis." />
 
@@ -91,9 +93,7 @@
   <header id="nav" class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-all duration-300">
     <nav class="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-2.5">
-        <span class="grid place-items-center w-9 h-9 rounded-xl bg-primary text-white shadow-soft">
-          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
-        </span>
+        <img src="icon.png" alt="LocaFácil" class="w-9 h-9 rounded-xl shadow-soft" />
         <span class="font-extrabold text-lg tracking-tight">LocaFácil</span>
       </a>
 
@@ -332,105 +332,128 @@
       <p class="reveal mt-5 text-lg text-muted" data-delay="2">Algumas das telas que você usa no dia a dia, do painel do proprietário ao chat de chamados.</p>
     </div>
 
-    <div class="mt-14 flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible">
+    <div class="mt-14 flex gap-6 sm:gap-8 overflow-x-auto no-scrollbar snap-x snap-mandatory px-1 pb-4 lg:justify-center lg:overflow-visible">
 
-      <!-- Tela 1: Dashboard financeiro -->
-      <figure class="reveal snap-center shrink-0 w-[260px] sm:w-[280px] lg:w-auto mx-auto">
-        <div class="rounded-[2.4rem] bg-[#0b0f14] p-2.5 shadow-phone ring-1 ring-black/10">
-          <div class="rounded-[1.9rem] overflow-hidden bg-canvas h-[520px]">
-            <div class="bg-gradient-to-br from-primary to-primary-dark px-4 pt-8 pb-5 rounded-b-[24px]">
-              <p class="text-white font-extrabold">Painel</p>
-              <p class="text-white/80 text-[11px] mt-0.5">Junho de 2026</p>
-            </div>
-            <div class="p-3 space-y-2.5 -mt-1">
-              <div class="grid grid-cols-3 gap-2">
-                <div class="rounded-xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold">A receber</p><p class="text-primary font-extrabold text-[13px] mt-0.5">R$ 5.4k</p></div>
-                <div class="rounded-xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold">Recebido</p><p class="text-success-dark font-extrabold text-[13px] mt-0.5">R$ 3.6k</p></div>
-                <div class="rounded-xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold">Atrasado</p><p class="text-danger font-extrabold text-[13px] mt-0.5">R$ 1.8k</p></div>
-              </div>
-              <div class="rounded-xl bg-white border border-line p-3 shadow-soft">
-                <div class="flex items-end justify-between h-20">
-                  <div class="w-5 rounded-t bg-primary-surface" style="height:40%"></div>
-                  <div class="w-5 rounded-t bg-primary-surface" style="height:65%"></div>
-                  <div class="w-5 rounded-t bg-primary-light" style="height:55%"></div>
-                  <div class="w-5 rounded-t bg-primary-surface" style="height:80%"></div>
-                  <div class="w-5 rounded-t bg-primary" style="height:100%"></div>
-                  <div class="w-5 rounded-t bg-primary-surface" style="height:70%"></div>
+      <!-- Tela 1: Painel do proprietário -->
+      <figure class="reveal snap-center shrink-0 w-[280px]">
+        <div class="relative rounded-[2.8rem] bg-[#0b0f14] p-3 shadow-phone ring-1 ring-black/10">
+          <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#0b0f14] rounded-b-2xl z-20"></div>
+          <div class="relative rounded-[2.2rem] overflow-hidden bg-canvas h-[600px]">
+            <div class="bg-gradient-to-br from-primary to-primary-dark px-5 pt-10 pb-6 rounded-b-[28px]">
+              <div class="flex items-start justify-between">
+                <div>
+                  <p class="text-white font-extrabold text-lg">Olá, Lucas 👋</p>
+                  <p class="text-white/80 text-xs mt-0.5">Painel do proprietário</p>
                 </div>
-                <p class="text-[10px] text-muted font-bold mt-2">Recebido nos últimos 6 meses</p>
+                <span class="relative grid place-items-center w-9 h-9 rounded-full bg-white/15">
+                  <svg viewBox="0 0 24 24" class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                  <span class="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-danger ring-2 ring-primary"></span>
+                </span>
               </div>
-              <div class="rounded-xl bg-danger-light p-3 flex items-center gap-2">
-                <span class="grid place-items-center w-7 h-7 rounded-lg bg-danger text-white shrink-0"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
-                <div><p class="text-danger-dark font-extrabold text-[12px] leading-tight">Apto 302 atrasado</p><p class="text-danger-dark/80 text-[10px]">venceu há 4 dias</p></div>
+            </div>
+            <div class="px-4 -mt-1 pt-4 space-y-3">
+              <div class="grid grid-cols-3 gap-2">
+                <div class="rounded-2xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold uppercase tracking-wide">A receber</p><p class="text-primary font-extrabold text-[14px] mt-1">R$ 5.400</p></div>
+                <div class="rounded-2xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold uppercase tracking-wide">Recebido</p><p class="text-success-dark font-extrabold text-[14px] mt-1">R$ 3.600</p></div>
+                <div class="rounded-2xl bg-white border border-line p-2.5 text-center shadow-soft"><p class="text-[9px] text-muted font-bold uppercase tracking-wide">Atrasado</p><p class="text-danger font-extrabold text-[14px] mt-1">R$ 1.800</p></div>
+              </div>
+              <p class="text-[13px] font-extrabold text-ink pt-1">Alertas</p>
+              <div class="rounded-2xl bg-white border border-line p-3 flex items-center gap-2.5 shadow-soft">
+                <span class="grid place-items-center w-9 h-9 rounded-xl bg-danger-light text-danger shrink-0"><svg viewBox="0 0 24 24" class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span>
+                <div class="flex-1 min-w-0"><p class="font-extrabold text-[13px] text-ink leading-tight truncate">Apto 302 — Centro</p><p class="text-[11px] text-danger-dark font-semibold">Atrasado há 4 dias</p></div>
+                <p class="text-[13px] font-extrabold text-danger">R$ 1.800</p>
+              </div>
+              <div class="rounded-2xl bg-white border border-line p-3 flex items-center gap-2.5 shadow-soft">
+                <span class="grid place-items-center w-9 h-9 rounded-xl bg-warning-light text-warning-dark shrink-0"><svg viewBox="0 0 24 24" class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0M19 17a2 2 0 1 0 4 0M3 17v-4l2-5a2 2 0 0 1 1.9-1.3h10.2A2 2 0 0 1 19 8l2 5v4"/></svg></span>
+                <div class="flex-1 min-w-0"><p class="font-extrabold text-[13px] text-ink leading-tight truncate">Caminhonete — Frota</p><p class="text-[11px] text-warning-dark font-semibold">Vence em 3 dias</p></div>
+                <p class="text-[13px] font-extrabold text-ink">R$ 2.200</p>
+              </div>
+              <p class="text-[13px] font-extrabold text-ink pt-1">Recebido por mês</p>
+              <div class="rounded-2xl bg-white border border-line p-3.5 shadow-soft">
+                <div class="flex items-end justify-between h-16">
+                  <div class="w-4 rounded-t bg-primary-surface" style="height:40%"></div>
+                  <div class="w-4 rounded-t bg-primary-surface" style="height:62%"></div>
+                  <div class="w-4 rounded-t bg-primary-light" style="height:52%"></div>
+                  <div class="w-4 rounded-t bg-primary-surface" style="height:80%"></div>
+                  <div class="w-4 rounded-t bg-primary" style="height:100%"></div>
+                  <div class="w-4 rounded-t bg-primary-surface" style="height:70%"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <figcaption class="text-center mt-4 font-bold text-ink">Dashboard financeiro <span class="text-[11px] font-extrabold text-amber-600">· Premium</span></figcaption>
+        <figcaption class="text-center mt-5 font-bold text-ink">Painel do proprietário <span class="text-[11px] font-extrabold text-amber-600">· Premium</span></figcaption>
       </figure>
 
       <!-- Tela 2: Chamado com chat -->
-      <figure class="reveal snap-center shrink-0 w-[260px] sm:w-[280px] lg:w-auto mx-auto" data-delay="1">
-        <div class="rounded-[2.4rem] bg-[#0b0f14] p-2.5 shadow-phone ring-1 ring-black/10">
-          <div class="rounded-[1.9rem] overflow-hidden bg-canvas h-[520px] flex flex-col">
-            <div class="bg-gradient-to-br from-primary to-primary-dark px-4 pt-8 pb-4 rounded-b-[24px]">
-              <p class="text-white font-extrabold text-[15px] leading-tight">Vazamento na pia</p>
-              <span class="inline-flex items-center gap-1 mt-1 rounded-full bg-warning text-white text-[10px] font-bold px-2 py-0.5">Em andamento</span>
+      <figure class="reveal snap-center shrink-0 w-[280px]" data-delay="1">
+        <div class="relative rounded-[2.8rem] bg-[#0b0f14] p-3 shadow-phone ring-1 ring-black/10">
+          <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#0b0f14] rounded-b-2xl z-20"></div>
+          <div class="relative rounded-[2.2rem] overflow-hidden bg-canvas h-[600px] flex flex-col">
+            <div class="bg-gradient-to-br from-primary to-primary-dark px-5 pt-10 pb-5 rounded-b-[28px]">
+              <div class="flex items-center gap-2">
+                <span class="grid place-items-center w-9 h-9 rounded-xl bg-white/15 text-white"><svg viewBox="0 0 24 24" class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                <div>
+                  <p class="text-white font-extrabold text-[15px] leading-tight">Vazamento na pia</p>
+                  <span class="inline-flex items-center gap-1 mt-1 rounded-full bg-warning text-white text-[10px] font-bold px-2 py-0.5">Em andamento</span>
+                </div>
+              </div>
             </div>
-            <div class="flex-1 p-3 space-y-2.5 overflow-hidden">
-              <div class="max-w-[80%] rounded-2xl rounded-tl-sm bg-white border border-line p-2.5 shadow-soft">
-                <p class="text-[11px] text-ink leading-snug">A pia da cozinha está pingando embaixo. Mando foto?</p>
-                <p class="text-[9px] text-muted mt-1">Inquilino · 09:12</p>
+            <div class="flex-1 px-4 pt-4 space-y-3 overflow-hidden">
+              <div class="max-w-[82%] rounded-2xl rounded-tl-md bg-white border border-line p-3 shadow-soft">
+                <p class="text-[12px] text-ink leading-snug">A pia da cozinha está pingando embaixo. Mando foto?</p>
+                <p class="text-[9px] text-muted mt-1.5">Inquilino · 09:12</p>
               </div>
-              <div class="ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-primary p-2.5 shadow-soft">
-                <p class="text-[11px] text-white leading-snug">Pode mandar! Já chamo o encanador hoje.</p>
-                <p class="text-[9px] text-white/70 mt-1">Você · 09:15</p>
+              <div class="max-w-[60%] rounded-2xl rounded-tl-md bg-white border border-line p-1.5 shadow-soft">
+                <div class="rounded-xl bg-primary-surface h-24 grid place-items-center"><svg viewBox="0 0 24 24" class="w-8 h-8 text-primary/40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
               </div>
-              <div class="max-w-[70%] rounded-2xl rounded-tl-sm bg-white border border-line p-1.5 shadow-soft">
-                <div class="rounded-lg bg-primary-surface h-20 grid place-items-center"><svg viewBox="0 0 24 24" class="w-7 h-7 text-primary/40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
+              <div class="ml-auto max-w-[82%] rounded-2xl rounded-tr-md bg-primary p-3 shadow-soft">
+                <p class="text-[12px] text-white leading-snug">Pode mandar! Já chamo o encanador hoje. 👍</p>
+                <p class="text-[9px] text-white/70 mt-1.5">Você · 09:15</p>
               </div>
             </div>
             <div class="p-3 border-t border-line flex items-center gap-2">
-              <div class="flex-1 rounded-full bg-canvas border border-line px-3 py-2"><p class="text-[11px] text-muted">Mensagem…</p></div>
-              <span class="grid place-items-center w-8 h-8 rounded-full bg-primary text-white"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+              <div class="flex-1 rounded-full bg-canvas border border-line px-3.5 py-2.5"><p class="text-[12px] text-muted">Mensagem…</p></div>
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-primary text-white shrink-0"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
             </div>
           </div>
         </div>
-        <figcaption class="text-center mt-4 font-bold text-ink">Chamados com chat</figcaption>
+        <figcaption class="text-center mt-5 font-bold text-ink">Chamados com chat</figcaption>
       </figure>
 
       <!-- Tela 3: Fiscal / IR -->
-      <figure class="reveal snap-center shrink-0 w-[260px] sm:w-[280px] lg:w-auto mx-auto" data-delay="2">
-        <div class="rounded-[2.4rem] bg-[#0b0f14] p-2.5 shadow-phone ring-1 ring-black/10">
-          <div class="rounded-[1.9rem] overflow-hidden bg-canvas h-[520px]">
-            <div class="bg-gradient-to-br from-primary to-primary-dark px-4 pt-8 pb-5 rounded-b-[24px]">
-              <p class="text-white font-extrabold">Imposto de Renda</p>
-              <p class="text-white/80 text-[11px] mt-0.5">Ano-base 2025</p>
+      <figure class="reveal snap-center shrink-0 w-[280px]" data-delay="2">
+        <div class="relative rounded-[2.8rem] bg-[#0b0f14] p-3 shadow-phone ring-1 ring-black/10">
+          <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#0b0f14] rounded-b-2xl z-20"></div>
+          <div class="relative rounded-[2.2rem] overflow-hidden bg-canvas h-[600px]">
+            <div class="bg-gradient-to-br from-primary to-primary-dark px-5 pt-10 pb-6 rounded-b-[28px]">
+              <p class="text-white font-extrabold text-lg">Imposto de Renda</p>
+              <p class="text-white/80 text-xs mt-0.5">Ano-base 2025</p>
             </div>
-            <div class="p-3 space-y-2.5 -mt-1">
-              <div class="rounded-xl bg-white border border-line p-3 shadow-soft">
-                <p class="text-[10px] text-muted font-bold">Total recebido no ano</p>
-                <p class="text-2xl font-extrabold text-ink">R$ 43.200</p>
-                <div class="mt-2 h-1.5 rounded-full bg-line overflow-hidden"><div class="h-full bg-success w-2/3"></div></div>
-                <p class="text-[10px] text-muted mt-1.5"><b class="text-success-dark">R$ 28,8k declarados</b> · R$ 14,4k a declarar</p>
+            <div class="px-4 -mt-1 pt-4 space-y-3">
+              <div class="rounded-2xl bg-white border border-line p-4 shadow-soft">
+                <p class="text-[11px] text-muted font-bold uppercase tracking-wide">Total recebido no ano</p>
+                <p class="text-2xl font-extrabold text-ink mt-1">R$ 43.200</p>
+                <div class="mt-3 h-2 rounded-full bg-line overflow-hidden"><div class="h-full bg-success" style="width:67%"></div></div>
+                <p class="text-[11px] text-muted mt-2"><b class="text-success-dark">R$ 28.800 declarados</b> · R$ 14.400 a declarar</p>
               </div>
-              <p class="text-[11px] font-extrabold text-ink px-0.5">Por imóvel</p>
-              <div class="rounded-xl bg-white border border-line p-2.5 flex items-center justify-between shadow-soft">
-                <div class="flex items-center gap-2"><span class="grid place-items-center w-7 h-7 rounded-lg bg-primary-surface text-primary"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span><p class="text-[12px] font-bold text-ink">Apto 302</p></div>
-                <p class="text-[12px] font-extrabold text-ink">R$ 21,6k</p>
+              <p class="text-[13px] font-extrabold text-ink pt-1">Por imóvel</p>
+              <div class="rounded-2xl bg-white border border-line p-3 flex items-center justify-between shadow-soft">
+                <div class="flex items-center gap-2.5"><span class="grid place-items-center w-9 h-9 rounded-xl bg-primary-surface text-primary"><svg viewBox="0 0 24 24" class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span><div><p class="text-[13px] font-bold text-ink leading-tight">Apto 302</p><p class="text-[10px] text-muted">12 parcelas</p></div></div>
+                <p class="text-[13px] font-extrabold text-ink">R$ 21.600</p>
               </div>
-              <div class="rounded-xl bg-white border border-line p-2.5 flex items-center justify-between shadow-soft">
-                <div class="flex items-center gap-2"><span class="grid place-items-center w-7 h-7 rounded-lg bg-primary-surface text-primary"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span><p class="text-[12px] font-bold text-ink">Casa Jd. Sul</p></div>
-                <p class="text-[12px] font-extrabold text-ink">R$ 21,6k</p>
+              <div class="rounded-2xl bg-white border border-line p-3 flex items-center justify-between shadow-soft">
+                <div class="flex items-center gap-2.5"><span class="grid place-items-center w-9 h-9 rounded-xl bg-primary-surface text-primary"><svg viewBox="0 0 24 24" class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span><div><p class="text-[13px] font-bold text-ink leading-tight">Casa Jd. Sul</p><p class="text-[10px] text-muted">12 parcelas</p></div></div>
+                <p class="text-[13px] font-extrabold text-ink">R$ 21.600</p>
               </div>
-              <button class="w-full rounded-xl bg-primary text-white text-[12px] font-extrabold py-2.5 mt-1">Gerar informe de rendimentos</button>
+              <button class="w-full rounded-full bg-primary text-white text-[12px] font-extrabold py-3 mt-1 shadow-soft">Gerar informe de rendimentos</button>
             </div>
           </div>
         </div>
-        <figcaption class="text-center mt-4 font-bold text-ink">Relatório fiscal / IR <span class="text-[11px] font-extrabold text-amber-600">· Premium</span></figcaption>
+        <figcaption class="text-center mt-5 font-bold text-ink">Relatório fiscal / IR <span class="text-[11px] font-extrabold text-amber-600">· Premium</span></figcaption>
       </figure>
     </div>
-    <p class="reveal text-center text-sm text-muted mt-2 lg:hidden">← deslize para ver mais telas →</p>
+    <p class="reveal text-center text-sm text-muted mt-4 lg:hidden">← deslize para ver mais telas →</p>
   </section>
 
   <!-- ============== RECURSOS ============== -->
@@ -687,9 +710,7 @@
     <div class="mx-auto max-w-7xl px-5 sm:px-8 py-12 grid sm:grid-cols-2 gap-8">
       <div>
         <div class="flex items-center gap-2.5">
-          <span class="grid place-items-center w-8 h-8 rounded-lg bg-primary text-white">
-            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
-          </span>
+          <img src="icon.png" alt="LocaFácil" class="w-8 h-8 rounded-lg" />
           <span class="font-extrabold">LocaFácil</span>
         </div>
         <p class="mt-3 text-sm text-muted max-w-xs leading-relaxed">Gerencie tudo que você aluga — imóveis, veículos e equipamentos — em um só app.</p>
